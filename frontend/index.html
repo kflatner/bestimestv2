@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <title>Best i Mest</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <img src="/images/BIMlogo.png" alt="Logo" class="logo" onclick="goToPage('competitionSelect'); return false;">
+      <button  onclick="goToPage('competitionSelect'); return false;">Home </button>
+    </div>
+
+    <div class="menu-wrapper">
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <nav class="dropdown-menu" id="dropdownMenu">
+        <a href="#" onclick="goToPage('activitySettings'); toggleMenu(false); return false;">Planlegg Aktivitet</a>
+        <a href="#" onclick="goToPage('rules'); toggleMenu(false); return false;">Regler</a>
+        <a href="#" onclick="goToPage('players'); toggleMenu(false); return false;">Spillere</a>
+        <a href="#" onclick="goToPage('activities')">Aktiviteter</a>
+
+        <a href="#" onclick="goToPage('profile'); toggleMenu(false); return false;">Profil</a>
+        <a href="#" onclick="logout(); toggleMenu(false); return false;">Logg ut</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div id="app"></div>
+  </main>
+
+<script src="/scripts/model.js"></script>
+<script src="/scripts/components.js"></script>
+
+<!-- views -->
+<script src="/scripts/loginView.js"></script>
+<script src="/scripts/competitionView.js"></script>
+<script src="/scripts/playerView.js"></script>
+<script src="/scripts/playerInfoView.js"></script>
+<script src="/scripts/activitiesView.js"></script>
+<script src="/scripts/activitiesInfoView.js"></script>
+<script src="/scripts/activitySettingsView.js"></script>
+<script src="/scripts/profileView.js"></script>
+<script src="/scripts/rulesView.js"></script>
+<script src="/scripts/registerView.js"></script>
+
+
+<script src="/scripts/mainView.js"></script>
+
+
+
+  <script>
+    function toggleMenu(force) {
+      const menu = document.getElementById("dropdownMenu");
+      if (typeof force === 'boolean') {
+        if (force) menu.classList.add('open'); else menu.classList.remove('open');
+        return;
+      }
+      menu.classList.toggle("open");
+    }
+
+    document.addEventListener("click", (e) => {
+      const menu = document.getElementById("dropdownMenu");
+      const button = document.querySelector(".menu-toggle");
+      if (!menu.contains(e.target) && !button.contains(e.target)) {
+        menu.classList.remove("open");
+      }
+    });
+  </script>
+</body>
+</html>
