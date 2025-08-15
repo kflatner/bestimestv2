@@ -11,7 +11,7 @@ app.use(express.json());
 
 // serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('../frontend/CSS', express.static(path.join(__dirname, 'css')));
+app.use('/css', express.static(path.join(__dirname,'../frontend/CSS')));
 
 // routes
 app.use('/api/users', require('./routes/users'));
